@@ -38,14 +38,17 @@ if (file_exists($local_settings)) {
  * See: tests/installer-features/installer.feature
  */
 $settings['install_profile'] = 'standard';
-$databases['default']['default'] = array (
-  'database' => 'drupal',
-  'username' => 'drupal',
-  'password' => 'drupal',
-  'prefix' => '',
-  'host' => 'localhost',
-  'port' => '',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
-$settings['hash_salt'] = 'sCr7Qul7u5o7ZcD9YF5_GmST77EYfT36Nd85N3PeZbncRZLKsuRZjsjBqmR6efTuAdyB4PToJQ';
+
+if (!isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+  $databases['default']['default'] = array(
+    'database' => 'drupal',
+    'username' => 'drupal',
+    'password' => 'drupal',
+    'prefix' => '',
+    'host' => 'localhost',
+    'port' => '',
+    'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+    'driver' => 'mysql',
+  );
+  $settings['hash_salt'] = 'sCr7Qul7u5o7ZcD9YF5_GmST77EYfT36Nd85N3PeZbncRZLKsuRZjsjBqmR6efTuAdyB4PToJQ';
+}
