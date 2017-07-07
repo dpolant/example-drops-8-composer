@@ -15,9 +15,9 @@ vagrant_gui: false
 
 # If you need to run multiple instances of Drupal VM, set a unique hostname,
 # machine name, and IP address for each instance.
-vagrant_hostname: danpolant.dev
-vagrant_machine_name: danpolantvm
-vagrant_ip: 192.168.88.88
+vagrant_hostname: danpolant-drops.dev
+vagrant_machine_name: danpolant-drops-vm
+vagrant_ip: 192.168.88.89
 
 # Allow Drupal VM to be accessed via a public network interface on your host.
 # Vagrant boxes are insecure by default, so be careful. You've been warned!
@@ -344,3 +344,8 @@ known_hosts_path: ~/.ssh/known_hosts
 hostname_configure: true
 hostname_fqdn: "{{ vagrant_hostname }}"
 ssh_home: "{{ drupal_core_path }}"
+
+# Release config
+project_repo: "https://github.com/dpolant/example-drops-8-composer.git"
+release_repo: "ssh://codeserver.dev.12eae8d4-c857-4588-bf34-470ad2053cb8@codeserver.dev.12eae8d4-c857-4588-bf34-470ad2053cb8.drush.in:2222/~/repository.git"
+deploy_host: "Pantheon"

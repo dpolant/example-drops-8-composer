@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb3d249a163eafa5c0bc47e4574bf8e5",
+    "content-hash": "05c533255f28b062ca071424f9cb2c64",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -5474,6 +5474,61 @@
             "time": "2017-04-04T11:38:05+00:00"
         },
         {
+            "name": "consolidation/robo",
+            "version": "0.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/consolidation/Robo.git",
+                "reference": "9982edecb19f59420031dd9855b0d31e861b8b68"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/consolidation/Robo/zipball/9982edecb19f59420031dd9855b0d31e861b8b68",
+                "reference": "9982edecb19f59420031dd9855b0d31e861b8b68",
+                "shasum": ""
+            },
+            "require": {
+                "henrikbjorn/lurker": "~1.0",
+                "php": ">=5.4.0",
+                "symfony/console": "~2.5|~3.0",
+                "symfony/filesystem": "~2.5|~3.0",
+                "symfony/finder": "~2.5|~3.0",
+                "symfony/process": "~2.5|~3.0"
+            },
+            "require-dev": {
+                "codeception/aspect-mock": "0.5.4",
+                "codeception/base": "~2.1.5",
+                "codeception/verify": "0.2.*",
+                "natxet/cssmin": "~3.0",
+                "patchwork/jsqueeze": "~1.0",
+                "pear/archive_tar": "~1.0"
+            },
+            "suggest": {
+                "pear/archive_tar": "Allows tar archives to be created and extracted in taskPack and taskExtract, respectively."
+            },
+            "bin": [
+                "robo"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Robo\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Davert",
+                    "email": "davert.php@resend.cc"
+                }
+            ],
+            "description": "Modern task runner",
+            "time": "2016-04-13T20:14:17+00:00"
+        },
+        {
             "name": "container-interop/container-interop",
             "version": "1.2.0",
             "source": {
@@ -5557,6 +5612,43 @@
                 "instantiate"
             ],
             "time": "2015-06-14T21:17:01+00:00"
+        },
+        {
+            "name": "dpolant/ci-scripts",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dpolant/ci-scripts.git",
+                "reference": "bd23d8ef82e8946b6610107c0976dcf121048dee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dpolant/ci-scripts/zipball/bd23d8ef82e8946b6610107c0976dcf121048dee",
+                "reference": "bd23d8ef82e8946b6610107c0976dcf121048dee",
+                "shasum": ""
+            },
+            "require": {
+                "joestewart/robo-drupalvm": "^0.1.7",
+                "joestewart/robo-vagrant": "^0.1.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.4"
+            },
+            "bin": [
+                "bin/hobson"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mediacurrent\\CiScripts\\": "src"
+                }
+            },
+            "description": "Scripts helpful for testing a Drupal site on a Continuous-Integration server, or locally.",
+            "support": {
+                "source": "https://github.com/dpolant/ci-scripts/tree/master",
+                "issues": "https://github.com/dpolant/ci-scripts/issues"
+            },
+            "time": "2017-07-07T02:04:19+00:00"
         },
         {
             "name": "dpolant/drupal-vm",
@@ -5816,6 +5908,65 @@
             "time": "2017-01-03T13:21:43+00:00"
         },
         {
+            "name": "henrikbjorn/lurker",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flint/Lurker.git",
+                "reference": "712d3ef19bef161daa2ba0e0237c6b875587a089"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flint/Lurker/zipball/712d3ef19bef161daa2ba0e0237c6b875587a089",
+                "reference": "712d3ef19bef161daa2ba0e0237c6b875587a089",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/config": "^2.2|^3.0",
+                "symfony/event-dispatcher": "^2.2|^3.0"
+            },
+            "suggest": {
+                "ext-inotify": ">=0.1.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Lurker": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yaroslav Kiliba",
+                    "email": "om.dattaya@gmail.com"
+                },
+                {
+                    "name": "Konstantin Kudryashov",
+                    "email": "ever.zet@gmail.com"
+                },
+                {
+                    "name": "Henrik Bjrnskov",
+                    "email": "henrik@bjrnskov.dk"
+                }
+            ],
+            "description": "Resource Watcher.",
+            "keywords": [
+                "filesystem",
+                "resource",
+                "watching"
+            ],
+            "time": "2016-03-16T15:22:20+00:00"
+        },
+        {
             "name": "instaclick/php-webdriver",
             "version": "1.4.5",
             "source": {
@@ -5988,6 +6139,86 @@
                 "testing"
             ],
             "time": "2016-12-01T10:57:30+00:00"
+        },
+        {
+            "name": "joestewart/robo-drupalvm",
+            "version": "0.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/joestewart/robo-drupalvm.git",
+                "reference": "7c0a7f123e7270dbfd022c60a96338bc12db2698"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/joestewart/robo-drupalvm/zipball/7c0a7f123e7270dbfd022c60a96338bc12db2698",
+                "reference": "7c0a7f123e7270dbfd022c60a96338bc12db2698",
+                "shasum": ""
+            },
+            "require": {
+                "consolidation/robo": "~0.7.2",
+                "symfony/yaml": "~2.8"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "JoeStewart\\RoboDrupalVM\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joe Stewart",
+                    "email": "joe@joestewartjr.com"
+                }
+            ],
+            "description": "Drupal VM tasks Robo Task Runner",
+            "time": "2017-01-24T02:40:45+00:00"
+        },
+        {
+            "name": "joestewart/robo-vagrant",
+            "version": "0.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/joestewart/robo-vagrant.git",
+                "reference": "1641489a5a0bce173595f574efe68459e71abbd0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/joestewart/robo-vagrant/zipball/1641489a5a0bce173595f574efe68459e71abbd0",
+                "reference": "1641489a5a0bce173595f574efe68459e71abbd0",
+                "shasum": ""
+            },
+            "require": {
+                "consolidation/robo": "~0.7.2",
+                "symfony/event-dispatcher": "~2.5|~3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "JoeStewart\\Robo\\Task\\Vagrant\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joe Stewart",
+                    "email": "joe@joestewartjr.com"
+                }
+            ],
+            "description": "Vagrant tasks for Robo Task Runner",
+            "time": "2016-12-09T22:11:47+00:00"
         },
         {
             "name": "mikey179/vfsStream",
@@ -6978,7 +7209,8 @@
     "aliases": [],
     "minimum-stability": "alpha",
     "stability-flags": {
-        "drupal/simple_block": 10
+        "drupal/simple_block": 10,
+        "dpolant/ci-scripts": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
