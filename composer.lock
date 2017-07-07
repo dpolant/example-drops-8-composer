@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "05c533255f28b062ca071424f9cb2c64",
+    "content-hash": "89575aeb28a26aabcdf339d46b88244b",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1071,91 +1071,6 @@
             "time": "2017-05-05T21:26:28+00:00"
         },
         {
-            "name": "drupal/config_direct_save",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/config_direct_save",
-                "reference": "8.x-1.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/config_direct_save-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "dae776d96310aa01aa6e3c536821a1b496ffae1f"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1476108239"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "matio89",
-                    "homepage": "https://www.drupal.org/user/2320090"
-                }
-            ],
-            "description": "This module allow you to export configuration after changes",
-            "homepage": "https://www.drupal.org/project/config_direct_save",
-            "support": {
-                "source": "http://cgit.drupalcode.org/config_direct_save"
-            }
-        },
-        {
-            "name": "drupal/config_installer",
-            "version": "1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/config_installer",
-                "reference": "8.x-1.4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/config_installer-8.x-1.4.zip",
-                "reference": "8.x-1.4",
-                "shasum": "5371ced3d688f6c932992066fa0d5f44f7d6e7dd"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "type": "drupal-profile",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.4",
-                    "datestamp": "1488072484"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "alexpott",
-                    "homepage": "https://www.drupal.org/user/157725"
-                }
-            ],
-            "homepage": "https://www.drupal.org/project/config_installer",
-            "support": {
-                "source": "http://cgit.drupalcode.org/config_installer"
-            }
-        },
-        {
             "name": "drupal/console",
             "version": "1.0.0-rc23",
             "source": {
@@ -1633,49 +1548,6 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "time": "2017-06-21T18:13:27+00:00"
-        },
-        {
-            "name": "drupal/simple_block",
-            "version": "1.0.0-beta1",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/simple_block",
-                "reference": "8.x-1.0-beta1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/simple_block-8.x-1.0-beta1.zip",
-                "reference": "8.x-1.0-beta1",
-                "shasum": "3a3555e580993ee1600b6e2eb01ab481ff8d9caa"
-            },
-            "require": {
-                "drupal/core": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0-beta1",
-                    "datestamp": "1485418683"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "claudiu.cristea",
-                    "homepage": "https://www.drupal.org/user/56348"
-                }
-            ],
-            "description": "Provides simple title/content custom blocks stored as config entities and not as content entities.",
-            "homepage": "https://www.drupal.org/project/simple_block",
-            "support": {
-                "source": "http://cgit.drupalcode.org/simple_block"
-            }
         },
         {
             "name": "drush/drush",
@@ -5619,12 +5491,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dpolant/ci-scripts.git",
-                "reference": "bd23d8ef82e8946b6610107c0976dcf121048dee"
+                "reference": "1e76023c55822953eaaa3b0abbca04872d84c5e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dpolant/ci-scripts/zipball/bd23d8ef82e8946b6610107c0976dcf121048dee",
-                "reference": "bd23d8ef82e8946b6610107c0976dcf121048dee",
+                "url": "https://api.github.com/repos/dpolant/ci-scripts/zipball/1e76023c55822953eaaa3b0abbca04872d84c5e9",
+                "reference": "1e76023c55822953eaaa3b0abbca04872d84c5e9",
                 "shasum": ""
             },
             "require": {
@@ -5648,7 +5520,7 @@
                 "source": "https://github.com/dpolant/ci-scripts/tree/master",
                 "issues": "https://github.com/dpolant/ci-scripts/issues"
             },
-            "time": "2017-07-07T02:04:19+00:00"
+            "time": "2017-07-07 17:15:18"
         },
         {
             "name": "dpolant/drupal-vm",
@@ -7209,7 +7081,6 @@
     "aliases": [],
     "minimum-stability": "alpha",
     "stability-flags": {
-        "drupal/simple_block": 10,
         "dpolant/ci-scripts": 20
     },
     "prefer-stable": true,
