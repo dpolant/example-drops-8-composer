@@ -17,14 +17,14 @@ mode: default
 content:
   field_teaser:
     weight: 102
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_url:
     weight: 101
-    label: above
+    label: hidden
     settings:
       trim_length: 80
       url_only: false
@@ -37,4 +37,6 @@ content:
   links:
     weight: 100
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }
