@@ -1,0 +1,21 @@
+uuid: e0672156-11db-496e-b2d1-3a16cf805f31
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaser
+    - node.type.offsite_story
+  module:
+    - text
+id: node.offsite_story.field_teaser
+field_name: field_teaser
+entity_type: node
+bundle: offsite_story
+label: Teaser
+description: 'A short description for this piece of content to be displayed in lists.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

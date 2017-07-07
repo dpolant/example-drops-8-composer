@@ -1,28 +1,28 @@
-uuid: 4a917fc5-700a-4af4-a6b4-604ab28df67d
+uuid: 6598ef01-02bc-45ee-81d4-6b89d19b3f17
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.page.field_content
-    - field.field.node.page.field_teaser
-    - node.type.page
+    - field.field.node.onsite_story.field_content
+    - field.field.node.onsite_story.field_teaser
+    - node.type.onsite_story
   module:
     - entity_reference_revisions
     - text
     - user
-id: node.page.default
+id: node.onsite_story.default
 targetEntityType: node
-bundle: page
+bundle: onsite_story
 mode: default
 content:
   field_content:
-    type: entity_reference_revisions_entity_view
     weight: 101
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
     region: content
   field_teaser:
     weight: 102

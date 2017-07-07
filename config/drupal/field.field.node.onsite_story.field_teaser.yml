@@ -1,0 +1,21 @@
+uuid: 962014b8-cd97-4e94-9d55-cde504b9fe47
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaser
+    - node.type.onsite_story
+  module:
+    - text
+id: node.onsite_story.field_teaser
+field_name: field_teaser
+entity_type: node
+bundle: onsite_story
+label: Teaser
+description: 'A short description for this piece of content to be displayed in lists.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

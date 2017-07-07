@@ -1,4 +1,4 @@
-uuid: 4a996dc3-bd31-4848-8b11-798e85e992f7
+uuid: 573e8b40-7375-4875-8c07-239580e9f445
 langcode: en
 status: true
 dependencies:
@@ -9,9 +9,9 @@ third_party_settings:
     available_menus:
       - main
     parent: 'main:'
-name: Page
-type: page
-description: 'A page has a URL and a place for content.'
+name: 'Onsite story'
+type: onsite_story
+description: 'An article or essay on this website.'
 help: ''
 new_revision: true
 preview_mode: 1

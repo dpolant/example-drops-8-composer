@@ -1,0 +1,7 @@
+uuid: ddd4774f-e152-448c-8abe-63fbb87e9c80
+langcode: en
+status: true
+dependencies: {  }
+id: image
+label: Image
+behavior_plugins: {  }

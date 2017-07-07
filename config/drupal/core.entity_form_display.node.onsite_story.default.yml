@@ -1,18 +1,18 @@
-uuid: ea5b3054-98dc-4604-8553-bc2efe534f46
+uuid: 254c7f70-79b3-4ced-80ed-e6664bd164f5
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.page.field_content
-    - field.field.node.page.field_teaser
-    - node.type.page
+    - field.field.node.onsite_story.field_content
+    - field.field.node.onsite_story.field_teaser
+    - node.type.onsite_story
   module:
     - paragraphs
     - path
     - text
-id: node.page.default
+id: node.onsite_story.default
 targetEntityType: node
-bundle: page
+bundle: onsite_story
 mode: default
 content:
   created:
@@ -22,7 +22,6 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_content:
-    type: entity_reference_paragraphs
     weight: 3
     settings:
       title: Paragraph
@@ -32,6 +31,7 @@ content:
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }
+    type: entity_reference_paragraphs
     region: content
   field_teaser:
     weight: 26

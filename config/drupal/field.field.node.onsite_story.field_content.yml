@@ -1,0 +1,48 @@
+uuid: 7a391733-5e1d-4e9d-84b8-37aebe1f0eae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content
+    - node.type.onsite_story
+    - paragraphs.paragraphs_type.heading
+    - paragraphs.paragraphs_type.image
+    - paragraphs.paragraphs_type.text
+    - paragraphs.paragraphs_type.video
+  module:
+    - entity_reference_revisions
+id: node.onsite_story.field_content
+field_name: field_content
+entity_type: node
+bundle: onsite_story
+label: Content
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      heading: heading
+      image: image
+      text: text
+      video: video
+    target_bundles_drag_drop:
+      content_list:
+        weight: 6
+        enabled: false
+      heading:
+        enabled: true
+        weight: 7
+      image:
+        enabled: true
+        weight: 8
+      text:
+        enabled: true
+        weight: 9
+      video:
+        enabled: true
+        weight: 10
+field_type: entity_reference_revisions

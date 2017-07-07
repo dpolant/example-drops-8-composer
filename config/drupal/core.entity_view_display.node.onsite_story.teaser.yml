@@ -1,15 +1,15 @@
-uuid: e8afcc47-a9d5-4eaf-81c6-b628c7e3b23e
+uuid: 83c7cde8-a4c5-4ab6-91bd-726e14b6f78e
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - node.type.page
+    - node.type.onsite_story
   module:
     - user
-id: node.page.teaser
+id: node.onsite_story.teaser
 targetEntityType: node
-bundle: page
+bundle: onsite_story
 mode: teaser
 content:
   links:

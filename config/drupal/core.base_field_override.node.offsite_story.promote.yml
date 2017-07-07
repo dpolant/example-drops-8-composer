@@ -1,13 +1,13 @@
-uuid: 47ae0aca-c0e3-4f09-ad51-5a69812c4937
+uuid: 5b5c6eac-e95b-4e98-bc0e-63ca6565638a
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.page
-id: node.page.promote
+    - node.type.offsite_story
+id: node.offsite_story.promote
 field_name: promote
 entity_type: node
-bundle: page
+bundle: offsite_story
 label: 'Promoted to front page'
 description: ''
 required: false

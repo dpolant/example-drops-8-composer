@@ -1,0 +1,23 @@
+uuid: 46ef936d-dac3-471e-8184-b551f35d1279
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_type
+    - paragraphs.paragraphs_type.content_list
+id: paragraph.content_list.field_content_type
+field_name: field_content_type
+entity_type: paragraph
+bundle: content_list
+label: 'Content type'
+description: 'Select what type of content this paragraph will show teasers for. No selection means it will show all.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node_type'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference
