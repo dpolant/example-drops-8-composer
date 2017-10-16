@@ -224,7 +224,7 @@ installed_extras:
   # - tideways
   # - upload-progress
   - varnish
-  # - xdebug
+  - xdebug
   # - xhprof # use `tideways` if you're installing PHP 7+
 
 # Add any extra apt or yum packages you would like installed.
