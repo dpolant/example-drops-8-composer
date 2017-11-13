@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d51edd28b6e4cbae18d12702300709f9",
+    "content-hash": "7465a331f9f02d65b194c8a0c37097af",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1674,52 +1674,6 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/paragraphs"
             }
-        },
-        {
-            "name": "drupal/youtube",
-            "version": "dev-1.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/youtube",
-                "reference": "133a1b05da024a192877f7b397f09cba54b73271"
-            },
-            "require": {
-                "drupal/core": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0-beta3+6-dev",
-                    "datestamp": "1484583185"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "guschilds",
-                    "homepage": "https://www.drupal.org/user/1468898"
-                },
-                {
-                    "name": "jenlampton",
-                    "homepage": "https://www.drupal.org/user/85586"
-                },
-                {
-                    "name": "pferlito",
-                    "homepage": "https://www.drupal.org/user/511172"
-                }
-            ],
-            "description": "Defines a YouTube video and thumbnail field type.",
-            "homepage": "https://www.drupal.org/project/youtube",
-            "support": {
-                "source": "http://cgit.drupalcode.org/youtube"
-            },
-            "time": "2017-01-16 15:58:53"
         },
         {
             "name": "drush/drush",
@@ -7427,7 +7381,6 @@
     "aliases": [],
     "minimum-stability": "alpha",
     "stability-flags": {
-        "drupal/youtube": 20,
         "dpolant/ci-scripts": 20
     },
     "prefer-stable": true,
