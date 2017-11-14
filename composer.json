@@ -24,7 +24,6 @@
     "drupal/console": "^1.0.0-rc8",
     "drupal/core": "8.3.4",
     "drupal/paragraphs": "^1.1",
-    "drupal/youtube": "^1.0@beta",
     "drush/drush": "~8",
     "rvtraveller/qs-composer-installer": "^1.1",
     "webflo/drupal-core-strict": "^8"
