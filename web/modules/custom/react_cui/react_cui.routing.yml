@@ -1,0 +1,12 @@
+
+react_cui.node_edit_controller_hello:
+  path: '/react_cui/{node}'
+  options:
+    parameters:
+      bar:
+        type: entity:node
+  defaults:
+    _controller: '\Drupal\react_cui\Controller\NodeEditController::render'
+    _title: 'React Content UI Node Edit'
+  requirements:
+    _permission: 'access content'

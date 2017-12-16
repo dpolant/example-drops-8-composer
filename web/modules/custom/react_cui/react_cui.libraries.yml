@@ -1,0 +1,7 @@
+app:
+  js:
+    js/app/dist/app.bundle.js: 
+      preprocess: false
+
+  dependencies:
+    - core/drupalSettings

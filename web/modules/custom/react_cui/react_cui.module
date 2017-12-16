@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains react_cui.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function react_cui_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the react_cui module.
+    case 'help.page.react_cui':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('React Content UI') . '</p>';
+      return $output;
+
+    default:
+  }
+}

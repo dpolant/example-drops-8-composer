@@ -1,0 +1,14 @@
+{
+  "name": "drupal/react_cui",
+  "type": "drupal-module",
+  "description": "React Content UI",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/react_cui",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/react_cui",
+    "source": "http://cgit.drupalcode.org/react_cui"
+  },
+  "require": { }
+}
