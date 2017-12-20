@@ -15,7 +15,7 @@ vagrant_gui: false
 
 # If you need to run multiple instances of Drupal VM, set a unique hostname,
 # machine name, and IP address for each instance.
-vagrant_hostname: danpolant-drops.dev
+vagrant_hostname: danpolant.local
 vagrant_machine_name: danpolant-drops-vm
 vagrant_ip: 192.168.88.89
 
