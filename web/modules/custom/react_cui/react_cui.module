@@ -6,7 +6,10 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
-
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\user\Entity\User;
 /**
  * Implements hook_help().
  */
@@ -20,5 +23,16 @@ function react_cui_help($route_name, RouteMatchInterface $route_match) {
       return $output;
 
     default:
+  }
+}
+
+/**
+ * Implements hook_entity_access().
+ */
+function react_cui_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  // Overly simplified for now. It's possible this is only necessary because of
+  // core bug/quirk.
+  if ($operation == 'view' && $account->hasPermission('administer content') && $entity->getEntityTypeId() == 'entity_form_display') {
+    return AccessResult::allowed();
   }
 }
