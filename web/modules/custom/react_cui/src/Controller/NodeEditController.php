@@ -19,7 +19,11 @@ class NodeEditController extends ControllerBase {
   public function render(Node $node) {
 
     $build['#attached']['library'][] = 'react_cui/app';
-    $build['#attached']['drupalSettings']['reactCui']['nid'] = $node->id();
+    $build['#attached']['drupalSettings']['reactCui'] = [
+      'nid' => $node->id(),
+      'bundle' => $node->bundle(),
+    ];
+
     $build['#markup'] = '<div id="root"></div>';
 
     return $build;
