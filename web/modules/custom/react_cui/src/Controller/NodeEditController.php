@@ -21,6 +21,7 @@ class NodeEditController extends ControllerBase {
     $build['#attached']['library'][] = 'react_cui/app';
     $build['#attached']['drupalSettings']['reactCui'] = [
       'nid' => $node->id(),
+      'uuid' => $node->uuid(),
       'bundle' => $node->bundle(),
     ];
 
