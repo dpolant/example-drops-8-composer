@@ -11,8 +11,7 @@ class FormComponent extends React.Component {
   render() {
     const fieldConfig = this.props.fieldConfig;
     const fieldName = fieldConfig.field_name;
-    var ComponentName = deriveFormComponentName(fieldName, fieldConfig);
-    var fieldFormState = this.props.getFormState(fieldName);
+    var ComponentName = deriveFormComponentName(fieldName, fieldConfig);  
 
     return (
       <div className="field-form-component">
@@ -21,9 +20,7 @@ class FormComponent extends React.Component {
         <ComponentName 
           fieldConfig={fieldConfig} 
           isRequired={fieldConfig.required} 
-          fieldValue={fieldFormState}
-          setFormState={this.props.setFormState}
-          getFormState={this.props.getFormState}
+          fieldValue={this.props.fieldFormState}
           handleChange={this.props.handleChange}
         />
       </div>

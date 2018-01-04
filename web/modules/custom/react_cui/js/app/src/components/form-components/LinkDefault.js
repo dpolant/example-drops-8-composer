@@ -27,12 +27,10 @@ class LinkDefault extends React.Component {
   }
 
   static validate(value, fieldName, fieldConfig) {
-    console.log('validating linkdefault');  
-
     if (!validUrl.isUri(value.uri)) {
       return {
         status: 'error',
-        message: 'Test validation error'
+        message: 'URL is invalid'
       }
     }
   }  
