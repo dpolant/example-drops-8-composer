@@ -80,12 +80,21 @@ class App extends React.Component {
     });
   }
 
+  /**
+   * Clear all messages in state.
+   */
   clearMessages() {
     this.setState({
       messages: []
     })
   }
 
+  /**
+   * Submit the entity form and save the node/entity.
+   * 
+   * @param {object} e 
+   *   An onSubmit event object.
+   */
   submitEntityForm(e) {  
     // console.log(this.state.formState);
     var drupalConfig = this.state.drupalFieldConfig;
@@ -129,20 +138,65 @@ class App extends React.Component {
         }
       });
       console.log('updating node');
-      this.setState({
-        node: node
+
+      // Update node state.
+      // this.setState({
+      //   node: node
+      // });
+
+      // Send the mutations back to Drupal.
+      var payload = {
+        data: {
+          id: node.uuid,
+          attributes: mutations,
+          type: Constants.bundle,
+        }
+      };
+
+      console.log(payload);
+
+      var nodePath = Constants.getResources().node;
+      var serializedPayload = JSON.stringify(payload);
+      var requestConfig = {
+        headers: {
+          Accept: 'application/vnd.api+json',
+          'Content-Type': 'application/vnd.api+json'
+        }
+      }
+
+      axios.patch(nodePath, serializedPayload, requestConfig)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
       });
     }
-
-    console.log(node);
   }
 
+  /**
+   * Set the formstate for a node/entity field.
+   * 
+   * @param {object} value 
+   *   A field value to be set in the form state.
+   * @param {string} fieldname 
+   *   The name of a node/entity field.
+   */
   setFormState(value, fieldname) {
     const formState = this.state.formState;
     formState[fieldname] = value;
     this.setState({ formState });
   }
 
+  /**
+   * Get the form state value for a node/entity field.
+   * 
+   * @param {string} fieldname
+   *   The name of a node/entity field.
+   * 
+   * @return {object}
+   *   The field value in the form state.
+   */
   getFormState(fieldname) {
     const formState = this.state.formState;
     console.log(formState);
@@ -152,12 +206,22 @@ class App extends React.Component {
     }
   }
 
+  /**
+   * Handle transfering a non-scalar value change from an event object into the form state.
+   * 
+   * This is one of the methods that Form Components may use to keep the form state up to
+   * date with their changes.
+   * 
+   * @param {object} event 
+   *   An DOM change event.
+   * @param {*} fieldname
+   *   A field on the node/entity.
+   * @param A field property on the provided node/entity field.
+   */
   handleChange(event, fieldname, property) {
     var fieldFormState = this.getFormState(fieldname);
     fieldFormState[property] = event.target.value
 
-    // This is propagated down from App. We keep the form state updated
-    // in real time.
     this.setFormState(fieldFormState, fieldname);
   }
 

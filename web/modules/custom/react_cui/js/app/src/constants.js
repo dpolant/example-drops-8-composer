@@ -20,7 +20,13 @@ var Constants = {
 
     return this.getResourceBase(ssl) + path;
   },
+  /**
+   * The node/entity bundle.
+   */
   bundle: drupalSettings.reactCui.bundle,
+  /**
+   * The node/entity uuid.
+   */
   nodeUuid: drupalSettings.reactCui.uuid,
   getResources: function() {
     return {

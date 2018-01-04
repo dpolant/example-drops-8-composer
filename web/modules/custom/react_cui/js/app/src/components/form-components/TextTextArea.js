@@ -16,9 +16,6 @@ class TextTextArea extends React.Component {
   }
 
   static validate(value, fieldName, fieldConfig) {
-    console.log('childvalidate');
-    // console.log([value, fieldName, fieldConfig]);
-
     // return {
     //   status: 'error',
     //   message: 'Test validation error'
