@@ -1,46 +1,31 @@
 import React from 'react';
-import LinkDefault from './form-components/LinkDefault';
-import TextTextArea from './form-components/TextTextArea';
+import { deriveFormComponentName } from '../registry';
 
 class FormComponent extends React.Component {
-  // There's hopefully a better way to do this discovery.
-  getComponentRegistry() {
-    return {
-      link_default: {
-        component: LinkDefault
-      },
-      'text_textarea': {
-        'component': TextTextArea
-      }
-    }
-  }
 
-  static validate() {
-    console.log('validating');
+  static validate(value, fieldName, fieldConfig) {
+    const childComponentName = deriveFormComponentName(fieldName, fieldConfig);
+    return childComponentName.validate(value, fieldName, fieldConfig);
   }
 
   render() {
     const fieldConfig = this.props.fieldConfig;
-
-    // Derive a suitable sub-component.
-    const componentRegistry = this.getComponentRegistry();
-    const fieldFormType = fieldConfig.formConfigSettings.type;
-    
-
-    if (typeof componentRegistry[fieldFormType] === 'undefined') {
-      console.log(`Field ${fieldFormType} is not supported.`);
-      return null;
-    }
-
     const fieldName = fieldConfig.field_name;
-    var ComponentName = componentRegistry[fieldFormType].component;
+    var ComponentName = deriveFormComponentName(fieldName, fieldConfig);
+    var fieldFormState = this.props.getFormState(fieldName);
 
     return (
       <div className="field-form-component">
         <label>{fieldConfig.label}</label>
         <p className="field-description">{fieldConfig.description}</p>
-        <ComponentName fieldConfig={fieldConfig} isRequired={fieldConfig.required} fieldValue={this.props.node[fieldName]}/>
-      </div>      
+        <ComponentName 
+          fieldConfig={fieldConfig} 
+          isRequired={fieldConfig.required} 
+          fieldValue={fieldFormState}
+          setFormState={this.props.setFormState}
+          getFormState={this.props.getFormState}
+        />
+      </div>
     )
   }
 }

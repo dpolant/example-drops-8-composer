@@ -4,7 +4,7 @@ import App from './components/App';
 
 const Root = () => {
   return (
-    <App subreddit="reactjs"/>
+    <App/>
   )
 }
 
