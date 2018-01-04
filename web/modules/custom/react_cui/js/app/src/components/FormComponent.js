@@ -24,6 +24,7 @@ class FormComponent extends React.Component {
           fieldValue={fieldFormState}
           setFormState={this.props.setFormState}
           getFormState={this.props.getFormState}
+          handleChange={this.props.handleChange}
         />
       </div>
     )

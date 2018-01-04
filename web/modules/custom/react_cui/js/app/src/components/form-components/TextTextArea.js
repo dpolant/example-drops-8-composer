@@ -2,25 +2,13 @@ import React from 'react';
 
 class TextTextArea extends React.Component {
 
-  handleChange(event, fieldname) {
-    // Update form state.
-    var value = {
-      format: 'something',
-      value: event.target.value
-    }
-
-    // This is propagated down from App. We keep the form state updated
-    // in real time.
-    this.props.setFormState(value, fieldname);
-  }
-
   render() {
     let config = this.props.fieldConfig;
 
     return (
       <textarea         
         required={config.required}      
-        onChange={(e) => this.handleChange(e, config.field_name)}
+        onChange={(e) => this.props.handleChange(e, config.field_name, 'value')}
         rows={config.formConfigSettings.basic.rows}>
           {this.props.fieldValue.value}
       </textarea>

@@ -162,6 +162,15 @@ class App extends React.Component {
     }
   }
 
+  handleChange(event, fieldname, property) {
+    var fieldFormState = this.getFormState(fieldname);
+    fieldFormState[property] = event.target.value
+
+    // This is propagated down from App. We keep the form state updated
+    // in real time.
+    this.setFormState(fieldFormState, fieldname);
+  }
+
   render() {
     return (
       <div className="drupal-field-container">
@@ -170,6 +179,7 @@ class App extends React.Component {
             fieldConfig={this.state.drupalFieldConfig[key]}            
             setFormState={this.setFormState}
             getFormState={this.getFormState}
+            handleChange={this.handleChange}
           />
         )}
         <button onClick={(e) => this.submitEntityForm(e)}>Save</button>
