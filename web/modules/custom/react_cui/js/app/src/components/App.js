@@ -12,12 +12,14 @@ import Constants from '../constants';
 class App extends React.Component {
   constructor() {
     super();
+
     this.setFormState = this.setFormState.bind(this);
     this.getFormState = this.getFormState.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.submitEntityForm = this.submitEntityForm.bind(this);
     this.updateStateAfterNodeResponse = this.updateStateAfterNodeResponse.bind(this);
-
+    this.fieldHasError = this.fieldHasError.bind(this);
+    
     this.state = {
       drupalFieldConfig: {},
       node: {},
@@ -107,6 +109,7 @@ class App extends React.Component {
         errors.push({
           fieldName: fieldName,
           message: result.message,
+          type: 'error'          
         });
       }
       else {
@@ -136,8 +139,11 @@ class App extends React.Component {
   }
 
   /**
+   * Sent a node update back to Drupal via PATCH
    * 
-   * @param {*} mutations 
+   * TODO: the state update and message setting should be moved out of this.
+   * 
+   * @param {array} mutations
    */
   patchNode(mutations) {
     var payload = {
@@ -162,6 +168,16 @@ class App extends React.Component {
               
       // Update state.
       this.updateStateAfterNodeResponse(response, this.state.drupalFieldConfig);
+
+      var messages = [{
+        type: 'success',
+        message: 'Saved node!'
+      }];
+
+      // Set a success message.
+      this.setState({
+        messages
+      })
     })
     .catch(function (error) {
       console.log(error);
@@ -174,23 +190,19 @@ class App extends React.Component {
    * @param {*} drupalFieldConfig 
    */
   updateStateAfterNodeResponse(response, drupalFieldConfig) {
-    var nodeData = response.data.data.attributes;
-
-    console.log(nodeData);
+    var node = response.data.data.attributes;
 
     // Set initial form state.
-    var initFormState = {};
+    var formState = {};
     Object.keys(drupalFieldConfig).map(function(fieldName) {
-      // console.log(fieldName);
-      // console.log(nodeData);
-      if (typeof nodeData[fieldName] !== 'undefined') {
-        initFormState[fieldName] = nodeData[fieldName];
+      if (typeof node[fieldName] !== 'undefined') {
+        formState[fieldName] = node[fieldName];
       }
     });
     
     this.setState({
-      node: nodeData,
-      formState: initFormState,
+      node: node,
+      formState: formState,
       drupalFieldConfig: drupalFieldConfig
     });
   }
@@ -246,6 +258,18 @@ class App extends React.Component {
     this.setFormState(fieldFormState, fieldname);
   }
 
+  /**
+   * 
+   * @param {*} fieldname 
+   */
+  fieldHasError(fieldname) {
+    for (var message of this.state.messages) {
+      if (message.type === 'error' && typeof message.fieldName !== 'undefined' && message.fieldName === fieldname) {
+        return true;
+      }
+    }
+  }
+
   render() {
     return (
       <div className="drupal-field-container">
@@ -255,6 +279,7 @@ class App extends React.Component {
             fieldConfig={this.state.drupalFieldConfig[fieldname]}
             handleChange={this.handleChange}
             fieldFormState={this.state.formState[fieldname]}
+            fieldHasError={this.fieldHasError}
           />
         )}
         <button onClick={(e) => this.submitEntityForm(e)}>Save</button>

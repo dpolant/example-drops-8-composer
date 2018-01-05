@@ -1,5 +1,6 @@
 import React from 'react';
 import { deriveFormComponentName } from '../registry';
+import { classString } from '../helpers';
 
 class FormComponent extends React.Component {
 
@@ -11,10 +12,16 @@ class FormComponent extends React.Component {
   render() {
     const fieldConfig = this.props.fieldConfig;
     const fieldName = fieldConfig.field_name;
-    var ComponentName = deriveFormComponentName(fieldName, fieldConfig);  
+    var ComponentName = deriveFormComponentName(fieldName, fieldConfig);
+
+    var wrapperClasses = ['field-form-component'];
+    console.log('checking has error');
+    if (this.props.fieldHasError(fieldName)) {
+      wrapperClasses.push('error');
+    }
 
     return (
-      <div className="field-form-component">
+      <div className={classString(wrapperClasses)}>
         <label>{fieldConfig.label}</label>
         <p className="field-description">{fieldConfig.description}</p>
         <ComponentName 
