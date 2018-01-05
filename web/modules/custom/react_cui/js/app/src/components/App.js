@@ -16,7 +16,7 @@ class App extends React.Component {
     this.getFormState = this.getFormState.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.submitEntityForm = this.submitEntityForm.bind(this);
-    this.updateStateFromNodeResponse = this.updateStateFromNodeResponse.bind(this);
+    this.updateStateAfterNodeResponse = this.updateStateAfterNodeResponse.bind(this);
 
     this.state = {
       drupalFieldConfig: {},
@@ -35,50 +35,41 @@ class App extends React.Component {
       axios.get(resources.node) // 2
     ])
     .then(response => {
-      // Stitch the responses together in a useful way. For now let's say we only care about
-      // user-configured fields.
-      const formConfigData = response[0].data.data[0].attributes.content;;
-      const fieldConfigResponse = response[1]
-      const nodeResponse = response[2];
-      
-      const drupalFieldConfig = [];
-      for (var fieldConfigItem of fieldConfigResponse.data.data) {
-        let drupalFieldConfigItem = fieldConfigItem.attributes;
-        let fieldName = drupalFieldConfigItem.field_name;
-        let formConfigDataItem = formConfigData[fieldName];
-
-        drupalFieldConfigItem.formConfigSettings = {  
-          basic: formConfigDataItem.settings,
-          thirdParty: formConfigDataItem.third_party_settings,
-          type: formConfigDataItem.type
-        };
-
-        drupalFieldConfig[fieldName] = drupalFieldConfigItem;
-      }
-      
-      var nodeData = nodeResponse.data.data.attributes;
-
-      // Set initial form state.
-      var initFormState = {};
-      Object.keys(drupalFieldConfig).map(function(fieldName) {
-        // console.log(fieldName);
-        // console.log(nodeData);
-        if (typeof nodeData[fieldName] !== 'undefined') {
-          initFormState[fieldName] = nodeData[fieldName];
-        }
-      });
-
-      this.setState({
-        drupalFieldConfig: drupalFieldConfig,
-        node: nodeData,
-        formState: initFormState
-      });
-
-      console.log(initFormState);
+      var drupalFieldConfig = this.assembleDrupalConfigFromResponses(response[0], response[1]);
+      this.updateStateAfterNodeResponse(response[2], drupalFieldConfig);
     })
     .catch(function (error) {
       console.log(error);
     });
+  }
+
+  /**
+   * Stitch the Drupal entity config responses together in a useful way.
+   * 
+   * For now let's say we only care about user-configured fields.
+   * 
+   * @param {*} formConfigResponse 
+   * @param {*} fieldConfigResponse 
+   */
+  assembleDrupalConfigFromResponses(formConfigResponse, fieldConfigResponse) {
+    const formConfigData = formConfigResponse.data.data[0].attributes.content;  
+    const drupalFieldConfig = [];
+
+    for (var fieldConfigItem of fieldConfigResponse.data.data) {
+      let drupalFieldConfigItem = fieldConfigItem.attributes;
+      let fieldName = drupalFieldConfigItem.field_name;
+      let formConfigDataItem = formConfigData[fieldName];
+
+      drupalFieldConfigItem.formConfigSettings = {  
+        basic: formConfigDataItem.settings,
+        thirdParty: formConfigDataItem.third_party_settings,
+        type: formConfigDataItem.type
+      };
+
+      drupalFieldConfig[fieldName] = drupalFieldConfigItem;
+    }
+
+    return drupalFieldConfig;
   }
 
   /**
@@ -140,41 +131,42 @@ class App extends React.Component {
       });
       console.log('updating node');
 
-      // Update node state.
-      // this.setState({
-      //   node: node
-      // });
-
       // Send the mutations back to Drupal.
-      var payload = {
-        data: {
-          id: node.uuid,
-          attributes: mutations,
-          type: Constants.bundle,
-        }
-      };
-
-      console.log(payload);
-
-      var nodePath = Constants.getResources().node;
-      var serializedPayload = JSON.stringify(payload);
-      var requestConfig = {
-        headers: {
-          Accept: 'application/vnd.api+json',
-          'Content-Type': 'application/vnd.api+json'
-        }
-      }
-
-      axios.patch(nodePath, serializedPayload, requestConfig)
-      .then(response => {
-                
-        // Update state.
-        this.updateStateFromNodeResponse(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      this.patchNode(mutations);
     }
+  }
+
+  /**
+   * 
+   * @param {*} mutations 
+   */
+  patchNode(mutations) {
+    var payload = {
+      data: {
+        id: Constants.nodeUuid,
+        attributes: mutations,
+        type: Constants.bundle,
+      }
+    };
+
+    var nodePath = Constants.getResources().node;
+    var serializedPayload = JSON.stringify(payload);
+    var requestConfig = {
+      headers: {
+        Accept: 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json'
+      }
+    }
+
+    axios.patch(nodePath, serializedPayload, requestConfig)
+    .then(response => {
+              
+      // Update state.
+      this.updateStateAfterNodeResponse(response, this.state.drupalFieldConfig);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   /**
@@ -182,25 +174,26 @@ class App extends React.Component {
    * @param {*} response 
    * @param {*} drupalFieldConfig 
    */
-  updateStateFromNodeResponse(response) {
+  updateStateAfterNodeResponse(response, drupalFieldConfig) {
     var nodeData = response.data.data.attributes;
+
+    console.log(nodeData);
 
     // Set initial form state.
     var initFormState = {};
-    Object.keys(this.state.drupalFieldConfig).map(function(fieldName) {
+    Object.keys(drupalFieldConfig).map(function(fieldName) {
       // console.log(fieldName);
       // console.log(nodeData);
       if (typeof nodeData[fieldName] !== 'undefined') {
         initFormState[fieldName] = nodeData[fieldName];
       }
     });
-
+    
     this.setState({
       node: nodeData,
-      formState: initFormState
+      formState: initFormState,
+      drupalFieldConfig: drupalFieldConfig
     });
-
-    console.log(this.state);
   }
 
   /**
