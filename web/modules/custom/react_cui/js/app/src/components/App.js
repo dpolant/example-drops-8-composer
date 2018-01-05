@@ -7,7 +7,7 @@ import FormComponent from './FormComponent';
 import Messages from './Messages';
 
 // Helpers
-import Constants from '../constants'
+import Constants from '../constants';
 
 class App extends React.Component {
   constructor() {
@@ -87,8 +87,7 @@ class App extends React.Component {
    * @param {object} e 
    *   An onSubmit event object.
    */
-  submitEntityForm(e) {  
-    // console.log(this.state.formState);
+  submitEntityForm(e) {    
     var drupalConfig = this.state.drupalFieldConfig;
     var formState = this.state.formState;
     var node = this.state.node;
