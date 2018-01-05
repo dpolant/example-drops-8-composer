@@ -16,6 +16,7 @@ class App extends React.Component {
     this.getFormState = this.getFormState.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.submitEntityForm = this.submitEntityForm.bind(this);
+    this.updateStateFromNodeResponse = this.updateStateFromNodeResponse.bind(this);
 
     this.state = {
       drupalFieldConfig: {},
@@ -166,12 +167,40 @@ class App extends React.Component {
 
       axios.patch(nodePath, serializedPayload, requestConfig)
       .then(response => {
-        console.log(response);
+                
+        // Update state.
+        this.updateStateFromNodeResponse(response);
       })
       .catch(function (error) {
         console.log(error);
       });
     }
+  }
+
+  /**
+   * 
+   * @param {*} response 
+   * @param {*} drupalFieldConfig 
+   */
+  updateStateFromNodeResponse(response) {
+    var nodeData = response.data.data.attributes;
+
+    // Set initial form state.
+    var initFormState = {};
+    Object.keys(this.state.drupalFieldConfig).map(function(fieldName) {
+      // console.log(fieldName);
+      // console.log(nodeData);
+      if (typeof nodeData[fieldName] !== 'undefined') {
+        initFormState[fieldName] = nodeData[fieldName];
+      }
+    });
+
+    this.setState({
+      node: nodeData,
+      formState: initFormState
+    });
+
+    console.log(this.state);
   }
 
   /**
